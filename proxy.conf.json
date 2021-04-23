@@ -1,0 +1,9 @@
+{
+    "/api/*": {
+      "target": "https://twenty-two.herokuapp.com/",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }
+  

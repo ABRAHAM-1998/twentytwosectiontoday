@@ -1,0 +1,87 @@
+<mat-card class="content">
+    <mat-card-title>Register</mat-card-title>
+
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <p>
+                <mat-form-field>
+                    <input type="text" required matInput placeholder="Name" formControlName="name">
+                    <!-- <mat-hint *ngIf="checck.name == false && form.value.name == ''">Please enter name</mat-hint> -->
+                    <mat-hint style="color:red;" *ngIf="userexists.name == false ">Name already taken</mat-hint>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Email" formControlName="email">
+                    <mat-hint style="color:red;" *ngIf="userexists.email == false ">Email already taken</mat-hint>
+
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="number" matInput placeholder="Mobile Number" formControlName="mobile">
+                    <!-- <mat-hint *ngIf="checck.mobile == false && form.value.mobile.length != 10">Please enter Mobile</mat-hint> -->
+                    <mat-hint style="color:red;" *ngIf="userexists.mobile == false ">mobile no. already taken</mat-hint>
+
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-hint style="font-size: smaller;"> Date Of Birth</mat-hint>
+                <mat-form-field>
+                    <input type="date" matInput formControlName="dob">
+                    <mat-hint *ngIf="checck.dob == false && form.value.dob.length < 4">Please enter Date Of Birth
+                    </mat-hint>
+                </mat-form-field>
+
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Username" formControlName="username">
+          
+                    <mat-hint style="color:red;" *ngIf="userexists.username == false ">Username already taken</mat-hint>
+
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Re - Password" formControlName="repassword">
+                </mat-form-field>
+            </p>
+            <div *ngIf="form.value.password != form.value.repassword && form.value.repassword != ''">
+                <p [ngStyle]="{'color': 'red','font-size': '10px'}">Password mismatch !!</p>
+            </div>
+            <p style="color:red;font-size: smaller;">{{internlErr.status}} {{internlErr.statusText}}</p>
+
+            <div class="button">
+                <button type="submit" mat-button>Register</button>
+            </div>
+
+            <!-- <div *ngIf = 'data == false'>
+          <p style="color: red;">Login Faiiled !</p>
+        </div> -->
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<ng-template #content1 let-modal (click)="openDilog(content1)">
+    <div class="modal-header">
+        <h4 class="modal-title" [ngStyle]="{'color':'red'}">REGISTRATION FAILED </h4>
+        <button type="button" class="close" aria-label="Close" (click)="fn_close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <span class="small">Edit size name </span>
+    </div>
+    <div class="modal-footer">
+    </div>
+</ng-template>

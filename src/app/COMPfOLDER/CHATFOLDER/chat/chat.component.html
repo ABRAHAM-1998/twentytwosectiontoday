@@ -1,0 +1,36 @@
+
+<div class="">
+  <div class="header">
+    <h5>Public Messages</h5>
+    <!-- <a (click)="join()">Join</a> -->
+    <a (click)="leave()">Leave</a>
+
+  </div>
+<div class="boxone">
+  <div class="messages1" #scrollMe [scrollTop]="scrollTop" >
+    <div *ngFor="let item of messageArray;let index = index">
+      <div class="message">
+        <span><strong>{{item.user}} : </strong> {{item.message}}</span><span *ngIf="item.id == localuser._id" (click)="chatDelete(item,index)" style="margin-left: 10px;" class="material-icons">
+          delete_sweep
+        </span><br>
+        <p style="bottom: 0; font-size: 10px;color: rgba(62, 17, 228, 0.46);margin-bottom: 0;">{{item.date | date:'medium' }}</p>
+
+      </div>
+    </div>
+    <div>
+      <p style="color: rgba(248, 248, 247, 0.35);">Dou u need help??</p>
+      <p style="color: rgba(248, 248, 247, 0.35);">Annihilation Of trinity Mind</p>
+
+    </div>
+  </div>
+</div>
+  <div class="input" >
+    <input type="text" [(ngModel)]="messageText" placeholder="Enter your message.." (keyup.enter)="sendMessage()"/>
+    <!-- <a href="#" class="send">Send</a> -->
+    <button type="button" class="btn pull-right"  (click)="sendMessage()">Send</button>
+
+  </div>
+</div>
+<app-profile *ngIf="loading == false"></app-profile>
+
+  

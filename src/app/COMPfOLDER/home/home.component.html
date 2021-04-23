@@ -1,0 +1,98 @@
+<div class="grid-container">
+
+
+
+  <div class="grid-item">
+    <mat-card class="example-card" *ngIf="data.length < 1">
+      <mat-card-header>
+        <mat-card-title>Hi welcome to TWENTYTWO</mat-card-title>
+        <mat-card-subtitle>
+          <p>New to twentytwo?</p>
+          <p>see vido tutorial to add frinds,creat new post ,chat, video call and many more!!</p>
+        </mat-card-subtitle>
+
+      </mat-card-header>
+      <video width="300" height="640" controls>
+        <source src="../../../assets/initial video/VID-20201014-WA0003.mp4  " type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <mat-card-content>
+        <p>Add friends to see there posts and videos</p>
+        <p>Here is an example video</p>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+
+
+
+
+  <div class="grid-item" *ngFor="let item of data;let i =  index">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"> <img src="{{item.propic}}" class="image" alt=""></div>
+        <mat-card-title>{{item.name}}</mat-card-title>
+        <mat-card-subtitle>{{item.date | date  :'short'}}</mat-card-subtitle>
+        <mat-card-subtitle>{{item.location}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{item.image}}" alt="Photo">
+      <mat-card-content>
+        <p>{{item.Description}}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Comments
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>message</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>Comments</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">cancel</button>
+        <button mat-button color="primary" (click)="nextStep()">post</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </div>
+</div>
+<app-profile *ngIf="loading == false"></app-profile>
+<!-- <app-profile *ngIf="loading == false"></app-profile>
+
+ <cdk-virtual-scroll-viewport class="example-viewport" itemSize="2122" (scrolledIndexChange)="currentIndex($event)">
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let item of data;let i =  index">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"> <img src="{{item.postdetails[0].imgurl}}" class="image"
+              alt=""></div>
+          <mat-card-title>{{item.postdetails[0].name}}</mat-card-title>
+          <mat-card-subtitle>{{item.date | date  :'short'}}</mat-card-subtitle>
+          <mat-card-subtitle>{{item.location}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{item.image}}" alt="Photo">
+        <mat-card-content>
+          <p>{{item.Description}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>  
+
+</cdk-virtual-scroll-viewport> -->

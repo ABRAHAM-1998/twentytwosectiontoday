@@ -1,0 +1,83 @@
+<h3 style="margin-top: 10px;">Find friends</h3>
+<!-- <a href="" [routerLink]="['/mainui', { outlets: { 'auxialry': ['chat']} } ]">test</a> -->
+<div class="example-form ">
+    <mat-form-field class="example-full-width">
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option.name">
+                {{option.name}}
+
+                <button class="sendreqbtn" (click)="fn_fndReq(option)" mat-stroked-button color="warn">send
+                    Request</button>
+                <button class="viewbtn" (click)="fn_View(option)" mat-stroked-button color="primary">View
+                    profile</button>
+
+
+            </mat-option>
+        </mat-autocomplete>
+
+        <input matInput type="text" class="form-control  " [matAutocomplete]="auto"
+            placeholder="search with name or username" (input)="valuechangeMaterial($event.target.value)"
+            (input)="fnSearch()" [(ngModel)]="friends.search">
+    </mat-form-field>
+</div>
+<mat-tab-group>
+    <mat-tab label="Friends">
+        <mat-list>
+            <mat-list-item *ngFor="let friend of myfriends">
+                <img matListAvatar src="{{friend.imgurl}}" alt="Photo">
+                <h3 matLine> {{friend.name}} </h3>
+                <p matLine>
+                    <span> {{friend.username}} </span>
+                    <span class="btn"><button mat-button  (click)="pmsg(friend)">Message</button> </span>
+                    <!-- <span class="btn"><button mat-button  [routerLink]="['/mainui', { outlets: { 'auxialry': ['pchat' ,{id:[friend._id], name: [friend.name]}]} } ]">Message</button> </span> -->
+                    <span class="btn"><button mat-button color="primary" (click)="fn_View(friend)">View Profile</button>
+                    </span>
+
+                </p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab label="Friend Request">
+        <mat-list>
+            <mat-list-item *ngFor="let friend of reqested">
+                <img matListAvatar src="{{friend.imgurl}}" alt="Photo">
+                <h3 matLine> {{friend.name}} </h3>
+                <p matLine>
+                    <span> {{friend.username}} </span>
+                    <span class="btn">
+                        <button (click)="Accept(friend._id)" mat-stroked-button color="primary">Accept</button>
+
+                    </span>
+                    <span class="btn"><button mat-button color="primary" (click)="fn_View(friend)">View Profile</button>
+                    </span>
+
+                </p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab label="Send Request">
+        <mat-list>
+            <mat-list-item *ngFor="let friend of friendlist">
+                <img matListAvatar src="{{friend.imgurl}}" alt="Photo">
+                <h3 matLine> {{friend.name}} </h3>
+                <p matLine>
+                    <span> {{friend.username}} </span>
+                    <span class="btn">
+                        <button (click)="cancelreq(friend._id)" mat-stroked-button color="warn">cancel</button>
+
+                    </span>
+                    <span class="btn">
+                        <button mat-button color="primary" (click)="fn_View(friend)">View Profile</button>
+                    </span>
+
+                </p>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+</mat-tab-group>
+
+<app-profile *ngIf="loading == false"></app-profile>

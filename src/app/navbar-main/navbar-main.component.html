@@ -1,0 +1,83 @@
+<link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+<mat-sidenav-container fullscreen>
+	<mat-sidenav #sidenav mode="side" class="app-sidenav">
+		<div class="centerimg">
+			<img width="190" mat-card-lg-image class="image" [src]="transform()">
+		</div>
+		<mat-nav-list>
+			<h4 matLine>{{pdata['name']}}</h4>
+
+			<a mat-list-item [routerLink]="[{ outlets: { 'auxialry': 'home' } }]" routerLinkActive="active-list-item"
+				(click)="sidenav.toggle()">
+				<h2 matLine>FEEDS</h2>
+				<mat-icon matListIcon>speed</mat-icon>
+			</a>
+			<a mat-list-item (click)="fn_View(pdata['_id'])" routerLinkActive="active-list-item" (click)="sidenav.toggle()">
+				<h2 matLine>MY PROFILE</h2>
+				<mat-icon matListIcon>add_shopping_cart</mat-icon>
+			</a>
+			<a mat-list-item [routerLink]="[{ outlets: { 'auxialry': 'friends' } }]"
+				routerLinkActive="active-list-item" (click)="sidenav.toggle()">
+				<h2 matLine> FRIEND SEARCH</h2>
+				<mat-icon matListIcon>category</mat-icon>
+			</a>
+			<a mat-list-item [routerLink]="[{ outlets: { 'auxialry': 'chat' } }]" routerLinkActive="active-list-item" (click)="sidenav.toggle()">
+				<h2 matLine>Chats</h2>
+				<mat-icon matListIcon>engineering</mat-icon>
+			</a>
+			<a mat-list-item [routerLink]="[{ outlets: { 'auxialry': 'createpost' } }]"
+				routerLinkActive="active-list-item" (click)="sidenav.toggle()">
+				<h2 matLine>CREATE POST</h2>
+				<mat-icon matListIcon>perm_identity</mat-icon>
+			</a>
+			<a mat-list-item (click)="fn_logout()">
+				<h2 matLine class="logout-button">LOGOUT</h2>
+				<mat-icon matLfn_logoutistIcon>login</mat-icon>
+			</a>
+			<div class="dev">
+				<p class="p1">Developer Contact:</p><br>
+				<p class="p2">annihilation_of_trinity_mind | beta v3.03.6</p><br>
+
+			</div>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar color="primary" class="mat-elevation-z3 tools"
+			style="position: fixed;width: 100%;height:36px;display: flex;z-index: 200;">
+			<button mat-icon-button (click)="sidenav.toggle()">
+
+				<mat-icon>menu</mat-icon>
+			</button>
+			<h3 style="font-family: 'Freckle Face', cursive;">TWENTY TWO</h3>
+
+
+			<div class="toolbar-content">
+				<mat-icon matListIcon class="span2" [routerLink]="[{ outlets: { 'auxialry': 'chat' } }]">mark_chat_read
+				</mat-icon>
+				<a  href="https://www-josbin-v-com.herokuapp.com/" style="color: white;" > <mat-icon matlistIcon class="span2"> videocam</mat-icon></a>
+				<mat-icon matlistIcon class="span2" (click)="fn_logout()">exit_to_app</mat-icon>
+			</div>
+			<!-- href="https://www-josbin-v-com.herokuapp.com/" style="color: white;" -->
+
+
+		</mat-toolbar>
+		<div class="app-content mt-5">
+			<router-outlet name="auxialry"></router-outlet>
+		</div>
+
+		<div id="bottom-bar">
+			<i class="material-icons" [routerLink]="[{ outlets: { 'auxialry': 'home' } }]">
+				dynamic_feed
+			</i>
+			<i class="material-icons" [routerLink]="[{ outlets: { 'auxialry': 'createpost' } }]">
+				add_a_photo
+			</i>
+			<i class="material-icons" [routerLink]="[{ outlets: { 'auxialry': 'friends' } }]">
+				group_add
+			</i>
+			<i class="material-icons" [routerLink]="[{ outlets: { 'auxialry': 'profile' } }]">
+				person_pin
+			</i>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

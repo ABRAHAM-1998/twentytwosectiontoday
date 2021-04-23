@@ -1,0 +1,56 @@
+<!-- <div class="massege-wrapper" *ngIf='!messageLoading'>
+  <div class="massege-container">
+    <div class="opposite-user">
+      <h3>{{fromParent?.name}}</h3>
+    </div>
+
+    <ul #messageThread class="message-thread" *ngIf="messageArray.length !== 0">
+      <li *ngFor="let message of messageArray" [class.align-right]="message?.from">
+        {{ message?.message}}
+      </li>
+    </ul>
+
+    <div class="message-thread start-chatting-banner" *ngIf="messageArray.length == 0">
+      <p class="heading">
+        You haven't chatted with {{fromParent?.name}} in a while,
+        <span class="sub-heading">Say Hi.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="message-typer">
+    <input type="text" [(ngModel)]="messageText" placeholder="Enter your message.." (keyup.enter)="sendMessage()" />
+    <button type="button" class="btn btn-success pull-right" (click)="sendMessage()">Send</button>
+  </div>
+</div> -->
+
+
+
+
+
+<div class="">
+  <div class="header">
+    <button (click)="close()">X</button>
+    <p class="type">{{typing}}</p>
+    <h5>{{fromParent.name}}<p *ngIf="online !== 'online'" class="white online">last seen  :  {{online | date:'medium'}}</p>
+      <p *ngIf="online == 'online'" class="white online"> {{online}}</p>
+    </h5>
+    
+    <!-- <a (click)="join()">Join</a> -->
+
+  </div>
+  <div>
+    <div class="messages1" #scrollMe [scrollTop]="scrollTop">
+      <div *ngFor="let item of messageArray;let index = index" style="margin: 10px;">
+        <div>
+          <span  class="chat-message" [class.chat-message-right]="item?.from == localid">{{item.message}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="input">
+      <input type="text" [(ngModel)]="messageText" placeholder="Enter your message.." (keyup)="onKey($event)"
+        (keyup.enter)="sendMessage()" />
+      <!-- <a href="#" class="send">Send</a> -->
+      <button type="button" class="btn pull-right" (click)="sendMessage()">Send</button>
+    </div>
+  </div>

@@ -1,0 +1,75 @@
+// mat-card-subtitle{
+//     font-size: 10px;
+//   }
+  .image {
+    background-size: cover;
+    border-radius: 50%;;
+    width: 100px;
+    height: 100px;
+    margin-left: 20%;
+    margin-top: 10px;
+
+  }
+  mat-card-title-group{
+    display: flex;
+    justify-content: center;
+  }
+  mat-card-actions{
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+  .circles {
+    display: flex; 
+    justify-content: center;
+    div {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin: 5px;
+      -webkit-animation: colorChange .6s linear infinite;  /* Safari 4.0 - 8.0 */
+      animation: colorChange .6s linear infinite; // cubic-bezier(0, 0.5, 0.5, 1)
+      &:nth-child(2) {
+        animation-delay: .05s;
+      }
+      &:nth-child(3) {
+        animation-delay: .1s;
+      }
+      &:nth-child(4) {
+        animation-delay: .15s;
+      }
+      &:nth-child(5) {
+        animation-delay: .2s;
+      }
+      &:nth-child(6) {
+        animation-delay: .25s;
+      }
+      &:nth-child(7) {
+        animation-delay: .3s;
+      }
+      &:nth-child(8) {
+        animation-delay: .35s;
+      }
+    }
+  }
+  
+  .primary {
+    background-color: #770400;
+  }
+  
+  .alternate {
+    background-color: black;
+  }
+  
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes colorChange {
+      // from {background-color: #770400;}
+      to {background-color: transparent;}
+  }
+  
+  @keyframes colorChange {
+      // from {background-color: #770400;}
+      to {background-color: transparent;}
+  }

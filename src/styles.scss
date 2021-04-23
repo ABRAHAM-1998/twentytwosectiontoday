@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.active-list-item {
+    color: #673ab7 !important;
+    border-left:7px solid #673ab7;
+  }
+  
+  .app-sidenav {
+    min-width: 200px;
+    max-width: 200px;
+  }
+  
+  .app-content {
+    padding: 2%;
+  }
+  .mat-list-base .mat-list-option.mat-list-item-with-avatar {
+    height: 36px;
+}
+  
+.mat-grid-tile .mat-figure {
+   justify-content: flex-start !important ;
+   align-items: flex-start !important;
+}
